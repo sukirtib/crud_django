@@ -1,0 +1,35 @@
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Database
+*.sqlite3
+db.sqlite3
+
+# Virtual environment
+venv/
+env/
+ENV/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+
+# Environment variables
+.env
+*.env
+
+# Python
+*.pyc
+__pycache__
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
