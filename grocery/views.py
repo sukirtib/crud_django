@@ -18,4 +18,11 @@ def toggle_completed(request, item_id):
         item.completed = not item.completed
         item.save()
 
+
+def delete_item(request, item_id):
+    """Delete a grocery item"""
+    if request.method == 'POST':
+        item = get_object_or_404(GroceryItem, id=item_id)
+        item.delete()
+
     return redirect('grocery:index')
