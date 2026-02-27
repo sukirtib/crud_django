@@ -1,33 +1,63 @@
-<!-- Items List -->
-<div class="items">
-    {% for item in items %}
-        <div class="single-item">
-            <!-- Toggle completed -->
-            <form method="POST"
-                  action="{% url 'grocery:toggle' item.id %}"
-                  style="display:inline">
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Grocery Bud - Django</title>
+        <!-- Icons -->
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+        <!-- CSS -->
+        <link rel="stylesheet" href="{% static 'grocery/css/global.css' %}" />
+        <link rel="stylesheet" href="{% static 'grocery/css/single-item.css' %}" />
+        <link rel="stylesheet" href="{% static 'grocery/css/items.css' %}" />
+        <link rel="stylesheet" href="{% static 'grocery/css/form.css' %}" />
+    </head>
+    <body>
+        <section class="section-center">
+            <!-- Form -->
+            <form method="POST" action="{% url 'grocery:add' %}">
                 {% csrf_token %}
-                <input type="checkbox"
-                       {% if item.completed %}checked{% endif %}
-                       onchange="this.form.submit()" />
+                <h2>grocery bud</h2>
+                <div class="form-control">
+                    <input type="text" name="name" class="form-input" placeholder="e.g. eggs" />
+                    <button type="submit" class="btn">add item</button>
+                </div>
             </form>
-            <!-- Item name -->
-            <p style="text-decoration: {% if item.completed %}line-through{% else %}none{% endif %}">{{ item.name }}</p>
-            <!-- Edit -->
-            <a href="#" class="btn icon-btn edit-btn">
-                <i class="fa-regular fa-pen-to-square"></i>
-            </a>
-            <!-- Delete -->
-            <form method="POST"
-                  action="{% url 'grocery:delete' item.id %}"
-                  style="display: inline">
-                {% csrf_token %}
-                <button type="submit" class="btn icon-btn remove-btn">
-                    <i class="fa-regular fa-trash-can"></i>
-                </button>
-            </form>
-        </div>
-    {% empty %}
-        <p style="text-align: center; color: #888;">No items yet. Add one above!</p>
-    {% endfor %}
-</div>
+            <!-- Items List -->
+            <div class="items">
+                {% for item in items %}
+                    <div class="single-item">
+                        <!-- Toggle completed -->
+                        <form method="POST"
+                              action="{% url 'grocery:toggle' item.id %}"
+                              style="display:inline">
+                            {% csrf_token %}
+                            <input type="checkbox"
+                                   {% if item.completed %}checked{% endif %}
+                                   onchange="this.form.submit()" />
+                        </form>
+                        <!-- Item name -->
+                        <p style="text-decoration: {% if item.completed %}line-through{% else %}none{% endif %}">{{ item.name }}</p>
+                        <!-- Edit -->
+                        <a href="#" class="btn icon-btn edit-btn">
+                            <i class="fa-regular fa-pen-to-square"></i>
+                        </a>
+                        <!-- Delete -->
+                        <form method="POST"
+                              action="{% url 'grocery:delete' item.id %}"
+                              style="display:inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn icon-btn remove-btn">
+                                <i class="fa-regular fa-trash-can"></i>
+                            </button>
+                        </form>
+                    </div>
+                {% empty %}
+                    <p style="text-align: center; color: #888;">No items yet. Add one above!</p>
+                {% endfor %}
+            </div>
+        </section>
+    </body>
+</html>
