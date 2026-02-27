@@ -31,17 +31,15 @@
                             <i class="fa-regular fa-pen-to-square"></i>
                         </a>
                         <!-- Delete Button -->
-                        <form method="POST" action="{% url 'grocery:delete' item.id %}">
-                            {% csrf_token %}
-                            <button class="btn icon-btn remove-btn" type="submit">
-                                <i class="fa-regular fa-trash-can"></i>
-                            </button>
-                        </form>
-                    </div>
-                {% empty %}
-                    <p style="text-align: center; color: #888;">No items yet. Add one above!</p>
-                {% endfor %}
-            </div>
-        </section>
-    </body>
+                        <button class="btn icon-btn remove-btn" type="submit">
+                            <i class="fa-regular fa-trash-can"></i>
+                        </button>
+                    </form>
+                </div>
+            {% empty %}
+                <p style="text-align: center; color: #888;">No items yet. Add one above!</p>
+            {% endfor %}
+        </div>
+    </section>
+</body>
 </html>
