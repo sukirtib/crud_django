@@ -3,6 +3,7 @@ form h2 {
   margin-bottom: 1.5rem;
   text-transform: capitalize;
   font-weight: normal;
+  color: #800020; /* burgundy for heading */
 }
 
 .form-control {
@@ -19,6 +20,11 @@ form h2 {
   border: 1px solid #ddd;
 }
 
+.form-input:focus {
+  outline: none;
+  border-color: #800020; /* burgundy focus border */
+}
+
 .form-input::placeholder {
   color: #aaa;
 }
@@ -26,7 +32,7 @@ form h2 {
 .form-control .btn {
   cursor: pointer;
   color: #fff;
-  background: #06b6d4;
+  background: #800020; /* burgundy */
   border: transparent;
   border-radius: 0;
   border-top-right-radius: 0.25rem;
@@ -36,5 +42,5 @@ form h2 {
 }
 
 .form-control .btn:hover {
-  background: #0e7490;
+  background: #5a0017; /* darker burgundy */
 }
